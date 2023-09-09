@@ -24,6 +24,12 @@
         <%= image_tag("facebook.png", class: "facebook") %>
         Log in with facebook
        </a>
+      
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% elsif alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
 
        <a href="#" class="fs-6 d-block my-4 text-decoration-none">Forgot password?</a>
     </div>
