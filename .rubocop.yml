@@ -1,0 +1,105 @@
+require: rubocop-rails
+
+AllCops:
+  # 除外するディレクトリ（自動生成されるファイル）
+  # Exclusive Directory(automatically created)
+  Exclude:
+    - "vendor/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "bin/*"
+    - "node_modules/**/*"
+
+  # 新ルールを有効化
+  # Enable new rule
+  NewCops: enable
+
+# 1行あたりの文字数をチェックする
+# Count character per 1 line
+Layout/LineLength:
+  Max: 130
+  # 下記ファイルはチェックの対象から外す
+  # Exclude file below
+  Exclude:
+    - "Rakefile"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+
+# RSpecは1つのブロックあたりの行数が多くなるため、チェックの除外から外す
+# Exclude checking since RSpec has many lines per block
+# ブロック内の行数をチェックする
+# Check the lines in block
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+# Assignment: 変数への代入
+# Assignment: assign to variable
+# Branch: メソッド呼び出し
+# Branch: Method calling
+# Condition: 条件文
+# Condition: Conditional
+# 上記項目をRubocopが計算して基準値を超えると警告を出す（上記頭文字をとって'Abc'）
+# Rubocop calculate and give warnings when exceed the reference value(It is called 'Abc' by each first chars) 
+Metrics/AbcSize:
+  Max: 50
+
+# メソッドの中身が複雑になっていないか、Rubocopが計算して基準値を超えると警告を出す
+# Rubocop calculate and give warnings when exceed the reference value if the method is too complicated
+Metrics/PerceivedComplexity:
+  Max: 8
+
+# 循環的複雑度が高すぎないかをチェック（ifやforなどを1メソッド内で使いすぎている）
+# Check if the cyclomatic complexity is high(eg: too many 'if' or 'for' in one method)
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# メソッドの行数が多すぎないかをチェック
+# Check if the method has too many lines
+Metrics/MethodLength:
+  Max: 30
+
+# ネストが深すぎないかをチェック（if文のネストもチェック）
+# Check if the nest is deep(also nest of 'if' statement)
+Metrics/BlockNesting:
+  Max: 5
+
+# クラスの行数をチェック（無効）
+# Disable to check lines in class
+Metrics/ClassLength:
+  Enabled: false
+
+# 空メソッドの場合に、1行のスタイルにしない　NG例：def style1; end
+# When empty method, Do not use one liner(eg: def style1; end)
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# クラス内にクラスが定義されていないかチェック（無効）
+# Check if some class is defined in the class(Invalid) 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# 日本語でのコメントを許可
+# Allow Japanese comment
+Style/AsciiComments:
+  Enabled: false
+
+# クラスやモジュール定義前に、それらの説明書きがあるかをチェック（無効）
+# Before defining the class or module, Check the documentation is prepared(Invalid)
+Style/Documentation:
+  Enabled: false
+
+# ％i（）構文を使用していないシンボルで構成される配列リテラルをチェック（無効）
+# Check for array literals consisting of symbols not using the %i() syntax(Invalid)
+Style/SymbolArray:
+  Enabled: false
+
+# 文字列に値が代入されて変わっていないかチェック（無効）
+# Check if a value has been assigned to a string and it has not changed(invalid)
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# メソッドパラメータ名の最小文字数を設定
+# Set minimum number of characters for method parameter names
+Naming/MethodParameterName:
+  MinNameLength: 1

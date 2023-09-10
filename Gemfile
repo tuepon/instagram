@@ -48,13 +48,14 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'bootstrap', '~> 5.2', '>= 5.2.3'
-
-gem 'devise'
+gem 'bootstrap', '~> 5.2', '>= 5.2.3' # add
+gem 'devise' # add
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails' # Add
+  gem 'factory_bot_rails' # Add
 end
 
 group :development do
@@ -66,6 +67,11 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'rubocop', require: false # Add
+  gem 'rubocop-performance', require: false # Add
+  gem 'rubocop-rails', require: false # Add
+  gem 'rubocop-rspec' # Add
+  gem 'spring-commands-rspec' # Add
 end
 
 group :test do
