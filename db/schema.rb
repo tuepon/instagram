@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_103812) do
     t.float "longitude"
     t.float "lattitude"
     t.integer "user_id", null: false
-    t.boolean "allow_commnents"
+    t.boolean "allow_comments"
     t.boolean "show_likes_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
