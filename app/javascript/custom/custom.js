@@ -27,3 +27,4 @@ function loadFilePond() {
     acceptedFileTypes: ['image/*'],
   }); 
 }
+
