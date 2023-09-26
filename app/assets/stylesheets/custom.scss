@@ -52,3 +52,11 @@ body {
 .card::-webkit-scrollbar {
   width: 0;
 }
+
+.filepond--item {
+  width: calc(50% - 0.5em);
+}
+
+.filepond--root {
+  max-height: 20em;
+}

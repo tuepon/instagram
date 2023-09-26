@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.float :longitude
       t.float :lattitude
       t.references :user, null: false, foreign_key: true
-      t.boolean :allow_commnents
+      t.boolean :allow_comments
       t.boolean :show_likes_count
 
       t.timestamps
