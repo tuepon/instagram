@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_103709) do
   create_table "posts", force: :cascade do |t|
     t.string "caption"
     t.float "longitude"
-    t.float "lattitude"
+    t.float "latitude"
     t.integer "user_id", null: false
     t.boolean "allow_comments"
     t.boolean "show_likes_count"
