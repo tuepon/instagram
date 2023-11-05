@@ -59,7 +59,7 @@
 
       <small class="text-muted"><%= time_ago_in_words(post.created_at) %></small>
     </div>
-    <%= form_with url: comments_path, method: :post do |f| %>
+    <%= form_with url: comments_path, method: :post, data: {controller: "comments", action: "turbo:submit-end->comments#clear"} do |f| %>
       <div class="card-hooter d-flex justify-content-between bg-white">
         <%= f.hidden_field :post_id, value: post.id %>
         <%= f.text_area :comment_body, class: "w-75", placeholder: "Add a comment...", style: "border:none" %>
