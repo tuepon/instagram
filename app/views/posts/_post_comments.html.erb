@@ -1,6 +1,8 @@
-<% unless post.comments.count.zero? %>
-  <small class="text-muted">View all <%= pluralize(post.comments.count, "comments") %></small>
-<% end %>
-<% post.comments.each do |comment| %>
-  <p class="card-text m-0"><span class="fw-bold"><%= comment.user.username %></span> <%= comment.body %></p>
+<%= turbo_frame_tag "post#{post.id}comments" do %>
+  <% if post.comments.count > 0 %>
+    <small class="text-muted">View all <%= pluralize(post.comments.count, "comments") %></small>
+  <% end %>
+  <% post.comments.each do |comment| %>
+    <p class="card-text m-0"><span class="fw-bold"><%= comment.user.username %></span> <%= comment.body %></p>
+  <% end %>
 <% end %>
