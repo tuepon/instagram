@@ -1,7 +1,19 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="container w-75 card d-flex flex-row my3">
+  <div class="w-25 d-flex flex-column border-end">
+    <a href='#' class="active p-3 profile-edit-btn">Edit Profile</a>
+  </div>
+<div>
+
+</div>
+</div>
+
+
+
+
+
 
   <div class="field">
     <%= f.label :email %><br />
