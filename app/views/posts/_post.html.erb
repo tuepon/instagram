@@ -23,8 +23,7 @@
             </a>
 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Edit post</a></li>
-              <li><a class="dropdown-item" href="#">Delete post</a></li>
+              <li><%= button_to 'Delete post', post, method: :delete, class:"dropdown-item" %></li>
             </ul>
           </div>  
         </div>
