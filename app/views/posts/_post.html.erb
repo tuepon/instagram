@@ -25,7 +25,7 @@
             <ul class="dropdown-menu">
               <li><%= button_to 'Delete post', post, method: :delete, class:"dropdown-item" %></li>
             </ul>
-          </div>  
+          </div>
         </div>
 
       </div>
@@ -50,7 +50,7 @@
         </button>
         <div class="carousel-indicators" style="position:static">
           <% post.images.each_with_index do |img, i| %>
-            <button type="button" data-bs-target="#post<%= post.id %>_images" data-bs-slide-to="<%= i %>" class=" bg-dark <%= i==0 ? 'active' : '' %>" <%= i==0 ? 'aria-current="true"' : '' %> aria-label="<%= i+1 %>"></button>
+            <button type="button" data-bs-target="#post<%= post.id %>_images" data-bs-slide-to="<%= i %>" class=" bg-dark <%= i==0 ? 'active' : '' %>" <%= i==0 ? 'aria-current="true"' : '' %> aria-label="Slide <%= i+1 %>"></button>
           <% end %>
         </div>
       </div>
