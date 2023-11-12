@@ -21,7 +21,7 @@ class FollowsController < ApplicationController
     @follow_req.accept
     redirect_back(fallback_location: root_path)
   end
-  
+
   def decline_follow
     @follow_req.destroy
     redirect_back(fallback_location: root_path)
@@ -36,5 +36,4 @@ class FollowsController < ApplicationController
   def set_follow_req
     @follow_req = Follow.find(params[:follow_id])
   end
-
 end

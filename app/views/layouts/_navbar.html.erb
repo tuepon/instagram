@@ -16,33 +16,58 @@
       <div class="navbar-collapse gap-4">
         <%= link_to root_path, class: "text-dark" do %> <i class="fa-solid fa-house fa-xl"></i><% end %>
         <i class="fa-brands fa-facebook-messenger fa-xl"></i>
-        <a type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <a type="button" class="text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="fa-regular fa-square-plus fa-xl text-dark"></i>
         </a>
         <i class="fa-regular fa-compass fa-xl"></i>
-        <i class="fa-regular fa-heart fa-xl"></i>
+
+        <div class="dropstart">
+          <i class="fa-regular fa-heart fa-xl" data-bs-toggle="dropdown" aria-expanded="false"></i>
+          <ul class="dropdown-menu">
+            <% current_user.follow_requests.each do |fr| %>
+              <li>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <%= image_tag 'user-pp.png', class: "img-thumbnail rounded-circle", style: "width: 2.5rem" %>
+                    <div class="d-flex flex-column mx-3 justify-content-center">
+                      <small class="fw-bold" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width:5rem"> <%= link_to fr.follower, class: "a-decoration-none" do %> <%= fr.follower.username %> <% end %> </small>
+                    </div>
+                  </div>
+
+                    <%= button_to accept_follow_path(follow_id: fr.id), class: "btn btn-primary", style: "text-decoration:none" do %>
+                      <small class="fw-bold text-white">Accept</small>
+                    <% end %>
+                    <%= button_to decline_follow_path(follow_id: fr.id), class: "btn btn-danger", style: "text-decoration:none" do %>
+                      <small class="fw-bold text-white">Decline</small>
+                    <% end %>
+                    
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
 
         <div class="dropdown">
           <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <% if current_user && current_user.profile_pic.attached? %>
               <%= image_tag current_user.profile_pic, class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
             <% else %>
-              <%= image_tag "user-pp.png", class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
+              <%= image_tag 'user-pp.png', class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
             <% end %>
           </a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to 'Profile', user_path(current_user), class: "dropdown-item" %>
-              </li>
-              <li>
-                <%= link_to 'Settings', edit_user_registration_path, class: "dropdown-item" %>
-              </li>
-              <li>
-                <%= button_to 'Log out', destroy_user_session_path, class: "dropdown-item", method: :delete %>
-              </li>
-            </ul>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to 'Profile', user_path(current_user), class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to 'Settings', edit_user_registration_path, class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= button_to 'Log out', destroy_user_session_path, class: "dropdown-item", method: :delete%>
+            </li>
+          </ul>
         </div>
-        
+
       </div>
     </div>
   </div>
