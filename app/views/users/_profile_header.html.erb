@@ -13,8 +13,8 @@
 
     <div class="d-flex gap-5">
       <small class="fw-bold"><%= pluralize(user.posts.count, "post") %></small>
-      <small class="fw-bold"><%= pluralize(100, "Follower") %></small>
-      <small class="fw-bold"><%= pluralize(100, "Following") %></small>
+      <small class="fw-bold"><%= pluralize(user.followers.count, "Follower") %></small>
+      <small class="fw-bold"><%= pluralize(user.followings.count, "Following") %></small>
     </div>
 
     <div class="d-flex flex-column">

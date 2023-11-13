@@ -23,7 +23,7 @@
 
         <div class="dropstart">
           <i class="fa-regular fa-heart fa-xl" data-bs-toggle="dropdown" aria-expanded="false"></i>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu p-4">
             <% current_user.follow_requests.each do |fr| %>
               <li>
                 <div class="d-flex justify-content-between">
@@ -34,12 +34,14 @@
                     </div>
                   </div>
 
-                    <%= button_to accept_follow_path(follow_id: fr.id), class: "btn btn-primary", style: "text-decoration:none" do %>
+                  <div class="d-flex flex-row align-items-center justify-content-between", style="width: 11rem">
+                    <%= button_to accept_follow_path(follow_id: fr.id), method: :post, class: "btn btn-primary", style: "text-decoration:none" do %>
                       <small class="fw-bold text-white">Accept</small>
                     <% end %>
-                    <%= button_to decline_follow_path(follow_id: fr.id), class: "btn btn-danger", style: "text-decoration:none" do %>
+                    <%= button_to decline_follow_path(follow_id: fr.id), method: :delete, class: "btn btn-danger", style: "text-decoration:none" do %>
                       <small class="fw-bold text-white">Decline</small>
                     <% end %>
+                  </div>
                     
                 </div>
               </li>
