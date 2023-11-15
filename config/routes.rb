@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
 
   post "follow", to: "follows#follow", as: :follow
   delete "unfollow", to: "follows#unfollow", as: :unfollow
